@@ -207,3 +207,74 @@ array = ['one', 'two', 'three', 'four']
 
 console.log myFunction(item) for item in array
 
+###
+MAP (also JSON import)
+###
+
+# one line to iterate through an object and do something with the property you're getting
+json = require './example.json'
+myFunction = (arg) ->
+    return arg + '!'
+console.log myFunction(student.name) for student in json.students
+
+###
+SELECT
+Iterate through and test all at once
+###
+json = require './example.json'
+result = (item for item in json.students when item.name is "Ava")
+console.log result
+
+# also works like this
+scores = [53, 12, 63, 12, 92, 93, 78]
+passed = (score for score in scores when score > 60)
+console.log(passed)
+
+# more elaborate example
+passed = []
+failed = []
+(if score > 60 then passed else failed).push score for score in [53, 12, 63, 12, 92, 93, 78]
+console.log passed
+console.log failed
+
+# can split this up:
+passed = []
+failed = []
+for score in [53, 12, 63, 12, 92, 93, 78]
+    (if score > 60 then passed else failed).push score
+console.log passed
+console.log failed
+
+###
+INCLUDES
+see if something is in an array
+###
+
+array = ['one', 'two', 'three', 'four']
+console.log 'one' in array
+
+###
+PROPERTY ITERATION
+###
+object = {one: 1, two: 2}
+console.log "#{key} = #{value}" for key, value of object
+
+###
+MIN/MAX
+###
+console.log Math.max [14, 54, 92, 12]...
+console.log Math.min [14, 54, 92, 12]...
+
+###
+OR=
+if initial value is 0, '', undefined, or null, is replaced with first value
+###
+console.log test or= 5
+
+###
+DESTRUCTURING ARGUMENTS
+###
+someObject = { a: 'value for a', b: 'value for b'}
+{ a, b } = someObject
+console.log "a is '#{a}', b is '#{b}'"
+

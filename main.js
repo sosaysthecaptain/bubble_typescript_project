@@ -1,8 +1,6 @@
 var initialJSON = require('./students.json');
 var stringified = JSON.stringify(initialJSON);
 
-//var success = false;
-
 for (var i = 0; i < 100; i++) {
     var json = JSON.parse(stringified);
     var groups = [];
